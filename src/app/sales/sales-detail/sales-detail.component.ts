@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Sales } from '../sales';
 import { SalesService } from '../sales.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sales-detail',
@@ -30,18 +30,13 @@ export class SalesDetailComponent implements OnInit {
         )
     );
 
-    const subscribe = this.sales$.subscribe(val => {
-//      console.log(val.customerId);
+    this.sales$.subscribe(val => {
       const customerIds = val.customerId.split(',');
-      console.log(customerIds);
 
-      // this.customers$.push(this.customerService.getCustomer(2));
-      // this.customers$.push(this.customerService.getCustomer(3));
-      // console.log(this.customers$);
-
-      customerIds.forEach(id => {
-        // tslint:disable-next-line:radix
-        this.customers$.push(this.customerService.getCustomer(parseInt(id)));
+       customerIds.forEach(id => {
+        this.customerService.getCustomer(+id).subscribe(cust => {
+          this.customers$.push(cust);
+        });
       });
     });
 

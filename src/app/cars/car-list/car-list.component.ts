@@ -13,7 +13,7 @@ import { CarService } from './../car.service';
 })
 export class CarListComponent implements OnInit {
 
-  cars: Observable<Car[]>;
+  cars$: Observable<Car[]>;
   selectedId: number;
 
   constructor(
@@ -22,7 +22,7 @@ export class CarListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cars = this.route.paramMap.pipe(
+    this.cars$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.selectedId = +params.get('id');
         return this.service.getCars();

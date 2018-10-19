@@ -23,8 +23,7 @@ export class CarDetailComponent implements OnInit {
   ngOnInit() {
     this.car$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        // tslint:disable-next-line:radix
-        this.service.getCar(parseInt(params.get('id'))))
+        this.service.getCar(+params.get('id')))
     );
   }
 

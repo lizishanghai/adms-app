@@ -13,7 +13,7 @@ import { switchMap } from 'rxjs/operators';
 export class SalesListComponent implements OnInit {
 
   sales$: Observable<Sales[]>;
-  selectedId: number;
+  selectedId: number = null;
 
   constructor(
     private service: SalesService,
