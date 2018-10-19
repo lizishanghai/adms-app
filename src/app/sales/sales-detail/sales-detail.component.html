@@ -1,0 +1,32 @@
+<form *ngIf="sales$ | async as sales" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+    <h2>Sales of CAR - {{ sales.carId }}</h2>
+
+  <h3>"{{ sales.id }}"</h3>
+  <div>
+    <label>Id: </label>{{ sales.id }}</div>
+  <div>
+    <label>Customer Ids: </label>
+    <!-- <input type="text" name="customerId" [(ngModel)]="sales.customerId" placeholder="id" required/> -->
+    {{ sales.customerId }}
+  </div>
+  <p>
+    <button type="submit" [disabled]="form.invalid">Save</button>
+    <button (click)="gotoSales(sales)">Back</button>
+  </p>
+</form>
+
+<div *ngIf="customers$" >
+    <h2>CUSTOMERS buy CARS</h2>
+    <div *ngFor="let cust of customers$" >
+
+        <div><label></label>{{ cust.firstName }} {{ cust.lastName }}</div>
+        <div><label>Id: </label>{{ cust.id }}</div>
+        <div><label>Email: </label>{{ cust.email }}</div>
+        <div><label>Gender: </label>{{ cust.gender }}</div>
+        <div><label>Mobile: </label>{{ cust.mobile }}</div>
+        <hr>
+    </div>
+
+
+</div>
+

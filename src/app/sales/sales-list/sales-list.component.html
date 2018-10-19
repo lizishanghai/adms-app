@@ -1,0 +1,9 @@
+<h2>SALES</h2>
+<ul class="cars">
+  <li *ngFor="let sale of sales$ | async"
+   [class.selected]="sale.id === selectedId">
+  <a [routerLink]="['/sales', sale.id]">
+    <span class="badge">{{ sale.id }}</span>{{ sale.carId }}: {{ sale.quantity }}
+  </a>
+  </li>
+</ul>

@@ -20,7 +20,6 @@ export class CarService {
   }
 
   getCar(id: number | string) {
-    //console.log('getcar: ' + id);
     return this.getCars().pipe(
       map((cars: Car[]) => cars.find(car => car.id === +id))
     );
