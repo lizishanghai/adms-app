@@ -1,0 +1,50 @@
+<h2>CARS</h2>
+<form *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+
+  <h3>"{{ car.name }}"</h3>
+  <div>
+    <label>Id: </label>{{ car.id }}</div>
+  <div>
+    <label>Name: </label>
+    <input type="text" name="name" [(ngModel)]="car.name" placeholder="name" required/>
+  </div>
+  <div>
+    <label>Year: </label>
+    <input type="text" name="year" [(ngModel)]="car.year" placeholder="year" />
+  </div>
+  <div>
+    <label>Brand: </label>
+    <input type="text" name="brand" [(ngModel)]="car.brand" placeholder="brand" required/>
+  </div>
+  <div>
+    <label>EntryDate: </label>
+    <input type="text" name="entryDate" [(ngModel)]="car.entryDate" placeholder="entryDate" />
+  </div>
+  <div>
+    <label>Booked: </label>
+    <input type="text" name="booked" [(ngModel)]="car.booked" placeholder="booked" />
+  </div>
+  <div>
+    <label>Price: </label>
+    <input type="text" name="price" [(ngModel)]="car.price" placeholder="price" />
+  </div>
+  <div>
+    <label>Discount: </label>
+    <input type="text" name="discount" [(ngModel)]="car.discount" placeholder="discount" />
+  </div>
+  <div>
+    <label>Color: </label>
+    <input type="text" name="color" [(ngModel)]="car.color" placeholder="color" />
+  </div>
+  <div>
+    <label>Trim: </label>
+    <input type="text" name="trim" [(ngModel)]="car.trim" placeholder="trim" />
+  </div>
+  <p>
+    <button type="submit" [disabled]="form.invalid">Save</button>
+    <button (click)="gotoCars(car)">Back</button>
+  </p>
+  {{ car | json}}
+
+</form>
+
