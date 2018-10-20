@@ -1,9 +1,34 @@
-<h2>SALES</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">SALES</h1>
+</div>
+
 <ul class="cars">
-  <li *ngFor="let sale of sales$ | async"
-   [class.selected]="sale.id === selectedId">
-  <a [routerLink]="['/sales', sale.id]">
-    <span class="badge">{{ sale.id }}</span>{{ sale.carId }}: {{ sale.quantity }}
-  </a>
-  </li>
-</ul>
+    <li *ngFor="let sales of sales$ | async" [class.selected]="sales.id === selectedId">
+      <a [routerLink]="['/sales', sales.id]">
+        <span class="badge">{{ sales.id }}</span> {{ sales.carName }} | Sold: {{sales.quantity}}
+      </a>
+    </li>
+  </ul>
+
+
+<!--
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Sales Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales$ | async" [class.selected]="sale.id === selectedId">
+          <td>{{sale.id}}</td>
+          <td><a [routerLink]="['/car', sale.carId]">{{sale.carName}}</a></td>
+          <td>{{sale.brand}}</td>
+          <td><a [routerLink]="['/sales', sale.id]">{{sale.quantity}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->

@@ -1,9 +1,10 @@
-<h2>CARS</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">CARS</h1>
+</div>
 <ul class="cars">
-  <li *ngFor="let car of cars$ | async"
-   [class.selected]="car.id === selectedId">
-  <a [routerLink]="['/car', car.id]">
-    <span class="badge">{{ car.id }}</span>{{ car.name }}, {{ car.brand }}
-  </a>
+  <li *ngFor="let car of cars$ | async" [class.selected]="car.id === selectedId">
+    <a [routerLink]="['/car', car.id]">
+      <span class="badge">{{ car.id }}</span>{{ car.name }}, {{ car.brand }}
+    </a>
   </li>
 </ul>

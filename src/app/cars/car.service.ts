@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CARS } from './mock-cars';
 
 const HTTP_URL = 'http://localhost:3000/cars';
 

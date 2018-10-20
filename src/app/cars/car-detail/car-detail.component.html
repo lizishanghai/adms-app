@@ -1,5 +1,12 @@
-<h2>CARS</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">CAR DETAIL</h1>
+  </div>
 <form *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+
+    <p>
+        <button (click)="gotoCars(car)">Back</button>
+        <button type="submit" [disabled]="form.invalid">Save</button>
+      </p>
 
   <h3>"{{ car.name }}"</h3>
   <div>
@@ -40,11 +47,7 @@
     <label>Trim: </label>
     <input type="text" name="trim" [(ngModel)]="car.trim" placeholder="trim" />
   </div>
-  <p>
-    <button type="submit" [disabled]="form.invalid">Save</button>
-    <button (click)="gotoCars(car)">Back</button>
-  </p>
-  {{ car | json}}
+<br>
 
 </form>
 

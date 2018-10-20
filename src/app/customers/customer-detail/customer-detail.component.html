@@ -1,0 +1,33 @@
+<form *ngIf="customer$ | async as customer" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">CUSTOMER DETAIL</h1>
+      </div>
+      <p>
+          <button (click)="gotoCustomers(customer)">Back</button>
+          <button type="submit" [disabled]="form.invalid">Save</button>
+        </p>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Mobile</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{customer.id}}</td>
+              <td>{{customer.firstName}} {{ customer.lastName }}</td>
+              <td>{{customer.gender}}</td>
+              <td>{{customer.mobile}}</td>
+              <td>{{customer.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+  </form>

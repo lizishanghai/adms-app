@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   //   component: CarListComponent
   // },
   {
-    path: '', redirectTo: '/cars', pathMatch: 'full'
+    path: '', redirectTo: '/dashboard', pathMatch: 'full'
   },
   { path: '**', component: PageNotFoundComponent }
 ];

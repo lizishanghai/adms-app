@@ -1,5 +1,5 @@
-import { CustomerService } from './../customer.service';
-import { Customer } from './../customer';
+import { CustomerService } from '../../customers/customer.service';
+import { Customer } from '../../customers/customer';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Sales } from '../sales';

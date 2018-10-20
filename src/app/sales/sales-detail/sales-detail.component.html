@@ -1,32 +1,39 @@
 <form *ngIf="sales$ | async as sales" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
-    <h2>Sales of CAR - {{ sales.carId }}</h2>
-
-  <h3>"{{ sales.id }}"</h3>
-  <div>
-    <label>Id: </label>{{ sales.id }}</div>
-  <div>
-    <label>Customer Ids: </label>
-    <!-- <input type="text" name="customerId" [(ngModel)]="sales.customerId" placeholder="id" required/> -->
-    {{ sales.customerId }}
-  </div>
-  <p>
-    <button type="submit" [disabled]="form.invalid">Save</button>
-    <button (click)="gotoSales(sales)">Back</button>
-  </p>
-</form>
-
-<div *ngIf="customers$" >
-    <h2>CUSTOMERS buy CARS</h2>
-    <div *ngFor="let cust of customers$" >
-
-        <div><label></label>{{ cust.firstName }} {{ cust.lastName }}</div>
-        <div><label>Id: </label>{{ cust.id }}</div>
-        <div><label>Email: </label>{{ cust.email }}</div>
-        <div><label>Gender: </label>{{ cust.gender }}</div>
-        <div><label>Mobile: </label>{{ cust.mobile }}</div>
-        <hr>
+  <div *ngIf="customers$">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">SALES DETAIL</h1>
     </div>
+    <p>
+      <button (click)="gotoSales(sales)">Back</button>
+      <button type="submit" [disabled]="form.invalid">Save</button>
+    </p>
 
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Car</th>
+            <th>Brand</th>
+            <th>Customer Name</th>
+            <th>Gender</th>
+            <th>Mobile</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cust of customers$">
+            <td>{{sales.id}}</td>
+            <td>{{sales.carName}}</td>
+            <td>{{sales.brand}}</td>
+            <td>{{cust.firstName}} {{ cust.lastName }}</td>
+            <td>{{cust.gender}}</td>
+            <td>{{cust.mobile}}</td>
+            <td>{{cust.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-</div>
-
+</form>
