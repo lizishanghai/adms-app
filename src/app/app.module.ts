@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UiModule } from './ui/ui.module';
 import { CustomersModule } from './customers/customers.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
@@ -20,7 +19,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     CarsModule,
     SalesModule,
     CustomersModule,
-    UiModule,
     DashboardModule,
     AppRoutingModule
   ],

@@ -1,53 +1,92 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">CAR DETAIL</h1>
-  </div>
+  <h1 class="h2">CAR DETAIL</h1>
+</div>
+
 <form *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Car Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="name" [(ngModel)]="car.name" placeholder="Enter Car Name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="year" class="col-sm-2 col-form-label">Year</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="year" [(ngModel)]="car.year" id="year">
+            <option>2020</option>
+            <option>2019</option>
+            <option>2018</option>
+            <option>2017</option>
+            <option>2016</option>
+          </select>
+        </div>
+  </div>
+  <div class="form-group row">
+    <label for="brand" class="col-sm-2 col-form-label">Brand</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="brand" [(ngModel)]="car.brand" id="brand">
+            <option>BMW</option>
+            <option>Ford</option>
+            <option>Buick</option>
+            <option>Audi</option>
+            <option>Toyota</option>
+          </select>    </div>
+  </div>
+  <div class="form-group row">
+    <label for="entrydate" class="col-sm-2 col-form-label">EntryDate</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="entrydate" [(ngModel)]="car.entrydate" placeholder="Enter Entry Date">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">Booked</div>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" name="booked" [(ngModel)]="car.booked" type="checkbox" id="booked">
+        <label class="form-check-label" for="booked">
+          booked
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="price" class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-10">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input type="text" class="form-control" name="price" [(ngModel)]="car.price" placeholder="Enter Price">
+      </div>
 
-    <p>
-        <button (click)="gotoCars(car)">Back</button>
-        <button type="submit" [disabled]="form.invalid">Save</button>
-      </p>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="discount" class="col-sm-2 col-form-label">Discount</label>
+    <div class="col-sm-10">
+      <input type="range" class="custom-range" name="discount" [(ngModel)]="car.discount" min="0" max="100" id="discount">
+      {{car.discount}} %
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="color" class="col-sm-2 col-form-label">Color</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="color" [(ngModel)]="car.color" id="color">
+        <option>red</option>
+        <option>white</option>
+        <option>black</option>
+        <option>blue</option>
+        <option>grey</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="trim" class="col-sm-2 col-form-label">Trim</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" name="trim" [(ngModel)]="car.trim" placeholder="Enter Trim" rows="3"></textarea>
+    </div>
+  </div>
 
-  <h3>"{{ car.name }}"</h3>
-  <div>
-    <label>Id: </label>{{ car.id }}</div>
-  <div>
-    <label>Name: </label>
-    <input type="text" name="name" [(ngModel)]="car.name" placeholder="name" required/>
-  </div>
-  <div>
-    <label>Year: </label>
-    <input type="text" name="year" [(ngModel)]="car.year" placeholder="year" />
-  </div>
-  <div>
-    <label>Brand: </label>
-    <input type="text" name="brand" [(ngModel)]="car.brand" placeholder="brand" required/>
-  </div>
-  <div>
-    <label>EntryDate: </label>
-    <input type="text" name="entryDate" [(ngModel)]="car.entryDate" placeholder="entryDate" />
-  </div>
-  <div>
-    <label>Booked: </label>
-    <input type="text" name="booked" [(ngModel)]="car.booked" placeholder="booked" />
-  </div>
-  <div>
-    <label>Price: </label>
-    <input type="text" name="price" [(ngModel)]="car.price" placeholder="price" />
-  </div>
-  <div>
-    <label>Discount: </label>
-    <input type="text" name="discount" [(ngModel)]="car.discount" placeholder="discount" />
-  </div>
-  <div>
-    <label>Color: </label>
-    <input type="text" name="color" [(ngModel)]="car.color" placeholder="color" />
-  </div>
-  <div>
-    <label>Trim: </label>
-    <input type="text" name="trim" [(ngModel)]="car.trim" placeholder="trim" />
-  </div>
-<br>
-
+  <button class="btn btn-secondary" [routerLink]="['/cars']">Back</button>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
 </form>
-

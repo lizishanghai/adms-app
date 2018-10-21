@@ -1,10 +1,9 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">CARS</h1>
 </div>
-<ul class="cars">
-  <li *ngFor="let car of cars$ | async" [class.selected]="car.id === selectedId">
-    <a [routerLink]="['/car', car.id]">
-      <span class="badge">{{ car.id }}</span>{{ car.name }}, {{ car.brand }}
-    </a>
-  </li>
-</ul>
+<div id="list-example" class="list-group">
+  <a *ngFor="let car of cars$ | async" [class.active]="car.id === selectedId" class="list-group-item list-group-item-action"
+    [routerLink]="['/car', car.id]">
+    {{ car.id }} : {{ car.name }} / {{ car.brand }}
+  </a>
+</div>
