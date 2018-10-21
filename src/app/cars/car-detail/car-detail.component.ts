@@ -1,6 +1,6 @@
 import { switchMap } from 'rxjs/operators';
 import { CarService } from './../car.service';
-import { ActivatedRoute, Router,ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../car';
@@ -12,6 +12,7 @@ import { Car } from '../car';
 })
 export class CarDetailComponent implements OnInit {
   car$: Observable<Car>;
+  alerts: string;
   // @Output() update: EventEmitter<Car> = new EventEmitter<Car>();
 
   constructor(
@@ -27,17 +28,14 @@ export class CarDetailComponent implements OnInit {
     );
   }
 
-  gotoCars(car: Car) {
-    const carId = car ? car.id : null;
-    this.router.navigate(['/cars', {id: carId}]);
-  }
-
   onSubmit(car: Car, valid: boolean) {
     if (valid) {
-      // this.update.emit(car);
-      console.log(  this.car$ );
-      console.log(  car );
+      this.service.putCar(car).subscribe(obj => {
+        this.alerts = 'Save succeed';
+      },
+      err => {
+        this.alerts = 'Save Failed';
+      });
     }
-
   }
 }

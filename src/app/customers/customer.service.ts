@@ -20,10 +20,10 @@ export class CustomerService {
 
   getCustomer(id: number): Observable<Customer> {
     return this.http.get<Customer>(HTTP_URL + '/' + id);
-
-    // return CUSTOMERS.find((element) => {
-    //   return element.id === id;
-    // });
   }
+
+  putCustomer(customer: Customer): Observable<object> {
+    return this.http.put(HTTP_URL + '/' + customer.id, customer);
+ }
 
 }

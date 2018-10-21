@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">SALES</h1>
 </div>
-<!-- 
+<!--
 <ul class="cars">
     <li *ngFor="let sales of sales$ | async" [class.selected]="sales.id === selectedId">
       <a [routerLink]="['/sales', sales.id]">
@@ -11,9 +11,9 @@
   </ul> -->
 
   <div id="list-example" class="list-group">
-    <a *ngFor="let sales of sales$ | async" [class.active]="sales.id === selectedId" class="list-group-item list-group-item-action"
+    <a *ngFor="let sales of sales$ | async" class="list-group-item list-group-item-action"
       [routerLink]="['/sales', sales.id]">
-      {{ sales.id }} : {{ sales.carName }} - Sold : {{ sales.quantity }}
+      {{ sales.id }} : Car {{ sales.carId }} sold to {{ sales.quantity }} Customers
     </a>
   </div>
 

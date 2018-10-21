@@ -1,5 +1,6 @@
 <form *ngIf="sales$ | async as sales" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
   <div *ngIf="customers$">
+    <div *ngIf="car$">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">SALES DETAIL</h1>
     </div>
@@ -20,8 +21,8 @@
         <tbody>
           <tr *ngFor="let cust of customers$">
             <td>{{sales.id}}</td>
-            <td>{{sales.carName}}</td>
-            <td>{{sales.brand}}</td>
+            <td>{{car$.name}}</td>
+            <td>{{car$.brand}}</td>
             <td>{{cust.firstName}} {{ cust.lastName }}</td>
             <td>{{cust.gender}}</td>
             <td>{{cust.mobile}}</td>
@@ -29,6 +30,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
   </div>
 

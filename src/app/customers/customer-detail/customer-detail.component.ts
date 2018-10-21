@@ -12,6 +12,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 })
 export class CustomerDetailComponent implements OnInit {
   customer$: Observable<Customer>;
+  alerts: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,12 +30,17 @@ export class CustomerDetailComponent implements OnInit {
     const customerId = customer ? customer.id : null;
     this.router.navigate(['/customers', {id: customerId}]);
   }
+
   onSubmit(customer: Customer, valid: boolean) {
     if (valid) {
-      console.log(  this.customer$ );
-      console.log(  customer );
+      this.service.putCustomer(customer).subscribe(obj => {
+        console.log(<Customer>obj);
+        this.alerts = 'Save succeed';
+      },
+      err => {
+        this.alerts = 'Save Failed';
+      });
     }
-
-  }
+}
 
 }

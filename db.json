@@ -1,96 +1,86 @@
 {
-    "cars": [
-      {
-        "id": 1,
-        "name": "X1",
-        "year": 2018,
-        "brand": "BMW",
-        "entryDate": 1234567877,
-        "booked": true,
-        "price": 40600,
-        "discount": 95,
-        "color": "black",
-        "trim": "8-speed automatic w/OD and auto-manual"
-      },
-      {
-        "id": 2,
-        "name": "X2",
-        "year": 2018,
-        "brand": "BMW",
-        "entryDate": 8765431,
-        "booked": false,
-        "price": 60600,
-        "discount": 90,
-        "color": "white",
-        "trim": "8-speed automatic w/OD and auto-manual"
-      },
-      {
-        "id": 3,
-        "name": "X3",
-        "year": 2018,
-        "brand": "BMW",
-        "entryDate": 13579,
-        "booked": false,
-        "price": 80600,
-        "discount": 85,
-        "color": "red",
-        "trim": "8-speed automatic w/OD and auto-manual"
-      },
-      {
-        "id": 4,
-        "name": "X4",
-        "year": 2018,
-        "brand": "BMW",
-        "entryDate": 24680,
-        "booked": false,
-        "price": 100600,
-        "discount": 80,
-        "color": "blue",
-        "trim": "8-speed automatic w/OD and auto-manual"
-      }
-    ],
-    "sales" : [
-      {
+  "cars": [
+    {
       "id": 1,
+      "name": "X11",
+      "year": 2018,
       "brand": "BMW",
-      "carId": 1,
-      "carName": "X1",
-      "quantity": 4,
-      "customerId": "1,2,3,4"
+      "booked": true,
+      "price": 40600,
+      "discount": 95,
+      "color": "black",
+      "trim": "8-speed automatic w/OD and auto-manual"
     },
     {
       "id": 2,
+      "name": "X2",
+      "year": 2018,
       "brand": "BMW",
-      "carId": 2,
-      "carName": "X2",
-      "quantity": 2,
-      "customerId": "2,3"
+      "entryDate": 8765431,
+      "booked": false,
+      "price": 60600,
+      "discount": 90,
+      "color": "white",
+      "trim": "8-speed automatic w/OD and auto-manual"
     },
     {
       "id": 3,
+      "name": "X3",
+      "year": 2018,
       "brand": "BMW",
-      "carId": 3,
-      "carName": "X3",
-      "quantity": 3,
-      "customerId": "2,3,4"
+      "entryDate": 13579,
+      "booked": false,
+      "price": 80600,
+      "discount": 85,
+      "color": "red",
+      "trim": "8-speed automatic w/OD and auto-manual"
     },
     {
       "id": 4,
+      "name": "X4",
+      "year": 2018,
       "brand": "BMW",
-      "carId": 4,
-      "carName": "X4",
-      "quantity": 0,
-      "customerId": null
+      "entryDate": 24680,
+      "booked": false,
+      "price": 100600,
+      "discount": 80,
+      "color": "blue",
+      "trim": "8-speed automatic w/OD and auto-manual"
     }
   ],
-  "customers" : [
+  "sales": [
+    {
+      "id": 1,
+      "carId": 1,
+      "customerId": "1,2,3,4",
+      "quantity": 4
+    },
+    {
+      "id": 2,
+      "carId": 2,
+      "customerId": "2,3",
+      "quantity": 2
+    },
+    {
+      "id": 3,
+      "carId": 3,
+      "customerId": "2,3,4",
+      "quantity": 3
+    },
+    {
+      "id": 4,
+      "carId": 4,
+      "customerId": null,
+      "quantity": 0
+    }
+  ],
+  "customers": [
     {
       "id": 1,
       "firstName": "Json",
       "lastName": "Wang",
       "mobile": 6478869293,
-      "email": "json.wang@gmail.com",
-      "gender": "Male"
+      "email": "json.wang@gmail.com"
     },
     {
       "id": 2,
@@ -105,16 +95,14 @@
       "firstName": "Phill",
       "lastName": "James",
       "mobile": 134678654,
-      "email": "phill.james@gmail.com",
-      "gender": "Male"
+      "email": "phill.james@gmail.com"
     },
     {
       "id": 4,
       "firstName": "Alex",
       "lastName": "Sun",
       "mobile": 1865273494,
-      "email": "alex.sn@gmail.com",
-      "gender": "Female"
+      "email": "alex.sn@gmail.com"
     }
   ]
 }

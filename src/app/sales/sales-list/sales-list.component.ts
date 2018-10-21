@@ -13,7 +13,6 @@ import { switchMap } from 'rxjs/operators';
 export class SalesListComponent implements OnInit {
 
   sales$: Observable<Sales[]>;
-  selectedId: number = null;
 
   constructor(
     private service: SalesService,
@@ -23,7 +22,6 @@ export class SalesListComponent implements OnInit {
   ngOnInit() {
     this.sales$ = this.route.paramMap.pipe(
       switchMap(params => {
-        this.selectedId = +params.get('id');
         return this.service.getSales();
       })
     );

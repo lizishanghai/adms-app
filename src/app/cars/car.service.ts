@@ -23,4 +23,8 @@ export class CarService {
       map((cars: Car[]) => cars.find(car => car.id === +id))
     );
    }
+
+   putCar(car: Car): Observable<object> {
+      return this.http.put(HTTP_URL + '/' + car.id, car);
+   }
 }

@@ -6,6 +6,8 @@ import { Sales } from '../sales';
 import { SalesService } from '../sales.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, map } from 'rxjs/operators';
+import { CarService } from '../../cars/car.service';
+import { Car } from 'src/app/cars/car';
 
 @Component({
   selector: 'app-sales-detail',
@@ -14,32 +16,39 @@ import { switchMap, map } from 'rxjs/operators';
 })
 export class SalesDetailComponent implements OnInit {
   sales$: Observable<Sales>;
+  car$: Car;
   customers$: Customer[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: SalesService,
+    private salesService: SalesService,
+    private carService: CarService,
     private customerService: CustomerService
   ) { }
 
   ngOnInit() {
+
     this.sales$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getSale(params.get('id'))
-        )
+        this.salesService.getSale(params.get('id'))
+      )
     );
 
     this.sales$.subscribe(val => {
       const customerIds = val.customerId.split(',');
-
-       customerIds.forEach(id => {
+      customerIds.forEach(id => {
         this.customerService.getCustomer(+id).subscribe(cust => {
           this.customers$.push(cust);
         });
       });
     });
 
+    this.sales$.subscribe(val => {
+        this.carService.getCar(val.carId).subscribe(car => {
+          this.car$ = car;
+        });
+    });
   }
 
   gotoSales(sales: Sales) {

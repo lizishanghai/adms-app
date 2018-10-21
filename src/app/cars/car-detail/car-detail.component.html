@@ -2,7 +2,21 @@
   <h1 class="h2">CAR DETAIL</h1>
 </div>
 
+
+<div *ngIf="alerts" class="alert alert-success"  role="alert">
+  {{alerts | json}}
+</div>
+
+
 <form *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+
+  <div class="form-group row">
+    <label for="id" class="col-sm-2 col-form-label">Car Id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="id" [(ngModel)]="car.id" placeholder="Enter Car Id" required>
+    </div>
+  </div>
+
   <div class="form-group row">
     <label for="name" class="col-sm-2 col-form-label">Car Name</label>
     <div class="col-sm-10">

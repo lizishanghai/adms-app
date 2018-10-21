@@ -1,32 +1,68 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">CUSTOMER DETAIL</h1>
+</div>
+
+<div *ngIf="alerts" class="alert alert-success"  role="alert">
+  {{alerts | json}}
+</div>
+
 <form *ngIf="customer$ | async as customer" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">CUSTOMER DETAIL</h1>
-      </div>
 
-      <div class="table-responsive">
-        <table class="table table-hover table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>Mobile</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{customer.id}}</td>
-              <td>{{customer.firstName}} {{ customer.lastName }}</td>
-              <td>{{customer.gender}}</td>
-              <td>{{customer.mobile}}</td>
-              <td>{{customer.email}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="form-group row">
+    <label for="id" class="col-sm-2 col-form-label">Customer Id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="id" [(ngModel)]="customer.id" placeholder="Enter Customer Id"
+        required>
+    </div>
+  </div>
 
+  <div class="form-group row">
+    <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" placeholder="Enter First Name"
+        required>
+    </div>
+  </div>
 
-        <button class="btn btn-primary" [routerLink]="['/customers']">Back</button>
+  <div class="form-group row">
+    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" placeholder="Enter Last Name"
+        required>
+    </div>
+  </div>
 
-  </form>
+  <div class="form-group row">
+    <div class="col-sm-2">Gender</div>
+    <div class="col-sm-10">
+      <div class="form-check form-check-inline">
+        <!-- <input class="form-check-input" name="booked" [(ngModel)]="customer.booked" type="checkbox" id="booked">
+          <label class="form-check-label" for="booked">
+            booked
+          </label> -->
+          <label class="radio-inline"><input type="radio" name="optradio">Male</label>
+          <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="mobile" [(ngModel)]="customer.mobile" placeholder="Enter Customer mobile"
+        required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="email" [(ngModel)]="customer.email" placeholder="Enter Customer Email"
+        required>
+    </div>
+  </div>
+
+  <button class="btn btn-secondary" [routerLink]="['/customers']">Back</button>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
