@@ -5,6 +5,7 @@ import { SalesRoutingModule } from './sales-routing.module';
 import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesDetailComponent } from './sales-detail/sales-detail.component';
 import { FormsModule } from '@angular/forms';
+import { SalesEditComponent } from './sales-edit/sales-edit.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule
   ],
-  declarations: [SalesListComponent, SalesDetailComponent]
+  declarations: [SalesListComponent, SalesDetailComponent, SalesEditComponent]
 })
 export class SalesModule { }

@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { SalesModule } from './sales/sales.module';
 import { CarsModule } from './cars/cars.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     SalesModule,
     CustomersModule,
     DashboardModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [],

@@ -2,12 +2,12 @@
   "cars": [
     {
       "id": 1,
-      "name": "X11",
+      "name": "X1111",
       "year": 2018,
       "brand": "BMW",
       "booked": true,
       "price": 40600,
-      "discount": 95,
+      "discount": 41,
       "color": "black",
       "trim": "8-speed automatic w/OD and auto-manual"
     },
