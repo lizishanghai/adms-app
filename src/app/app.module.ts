@@ -1,8 +1,10 @@
+import { MaterialModule } from './material';
 import { AuthModule } from './auth/auth.module';
 import { SalesModule } from './sales/sales.module';
 import { CarsModule } from './cars/cars.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -17,6 +19,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     CarsModule,
     SalesModule,
     CustomersModule,
@@ -25,6 +29,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: []
 })
 export class AppModule { }

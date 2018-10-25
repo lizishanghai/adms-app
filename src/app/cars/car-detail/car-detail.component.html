@@ -1,13 +1,11 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">CAR DETAIL</h1>
-</div>
+<h1 class="h2">CAR DETAIL</h1>
 
 
-<div *ngIf="alerts" class="alert alert-success"  role="alert">
+<div *ngIf="alerts" class="alert alert-success" role="alert">
   {{alerts | json}}
 </div>
 
-
+<!--
 <form *ngIf="car$ | async as car" class="needs-validation" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
 
   <div class="form-group row">
@@ -109,4 +107,71 @@
 </form>
 
 
+ -->
 
+
+<form class="example-form" *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm"
+  novalidate>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Car Id" [(ngModel)]="car.id" name="id" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Car Name" [(ngModel)]="car.name" name="name" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Select Year" [(ngModel)]="car.year" name="year">
+      <mat-option value="option">2017</mat-option>
+      <mat-option value="option">2018</mat-option>
+      <mat-option value="option">2019</mat-option>
+      <mat-option value="option">2020</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Select Brand" [(ngModel)]="car.brand" name="brand">
+      <mat-option value="option">BMW</mat-option>
+      <mat-option value="option">FORD</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="picker" placeholder="Choose entry date" [(ngModel)]="car.entrydate" name="entrydate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-radio-group class="example-full-width" [(ngModel)]="car.booked" name="car.booked">
+    <span>Booked : </span>
+    <mat-radio-button value={{car.booked}}>Yes </mat-radio-button>
+    <mat-radio-button value={{car.booked}}>No</mat-radio-button>
+  </mat-radio-group>
+
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Price" type="number" [(ngModel)]="car.price" name="price" class="example-right-align">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Discount" type="number" [(ngModel)]="car.discount" name="discount" class="example-right-align">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Select Color" [(ngModel)]="car.color" name="color">
+      <mat-option value="option">Red</mat-option>
+      <mat-option value="option">White</mat-option>
+      <mat-option value="option">Black</mat-option>
+      <mat-option value="option">Blue</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Enter Trim" [(ngModel)]="car.trim" name="trim"></textarea>
+    </mat-form-field>
+
+</form>

@@ -2,7 +2,7 @@
   "cars": [
     {
       "id": 1,
-      "name": "X1111",
+      "name": "X1",
       "year": 2018,
       "brand": "BMW",
       "booked": true,

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+<!-- <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
     <span data-feather="gitlab"></span> ADMS</a>
   <ul class="navbar-nav px-3">
@@ -45,12 +45,28 @@
             </li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
 
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <mat-icon class="example-icon" routerLink="/dashboard" routerLinkActive="active">cloud_queue</mat-icon>
+      <span routerLink="/dashboard" routerLinkActive="active" id="title">ADMS </span>
+      <span class="example-spacer"></span>
+      <span routerLink="/login" routerLinkActive="active">Login</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-toolbar color="basic">
+      <mat-toolbar-row>
+         <span routerLink="/cars" routerLinkActive="active">Cars </span>
+        <span routerLink="/customers" routerLinkActive="active">Customers</span>
+        <span routerLink="/sales" routerLinkActive="active">Sales</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
       <router-outlet></router-outlet>
-
-    </main>
-  </div>
-</div>
+  <!-- </div>
+</div> -->

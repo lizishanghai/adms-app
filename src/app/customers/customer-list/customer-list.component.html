@@ -1,14 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">CUSTOMERS</h1>
-  </div>
-  <!-- <ul class="cars">
-    <li *ngFor="let customer of customers$ | async" [class.selected]="customer.id === selectedId">
-      <a [routerLink]="['/customer', customer.id]">
-        <span class="badge">{{ customer.id }}</span>{{ customer.firstName }} {{ customer.lastName }}
-      </a>
-    </li>
-  </ul> -->
-
+  <h1 class="h2">CUSTOMER LIST</h1>
+</div>
 
 <div id="customerlist" class="list-group">
     <a *ngFor="let customer of customers$ | async" [class.active]="customer.id === selectedId" class="list-group-item list-group-item-action"

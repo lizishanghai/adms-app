@@ -6,13 +6,15 @@ import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesDetailComponent } from './sales-detail/sales-detail.component';
 import { FormsModule } from '@angular/forms';
 import { SalesEditComponent } from './sales-edit/sales-edit.component';
+import { MaterialModule } from '../material';
 
 @NgModule({
   imports: [
     CommonModule,
     SalesRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   declarations: [SalesListComponent, SalesDetailComponent, SalesEditComponent]
 })

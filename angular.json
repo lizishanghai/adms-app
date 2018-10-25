@@ -23,15 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-               "./node_modules/font-awesome/css/font-awesome.css",
-               "./src/vender/flatui/dist/css/flat-ui.css",
+              // "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              //  "./node_modules/font-awesome/css/font-awesome.css",
+              //  "./src/vender/flatui/dist/css/flat-ui.css",
                "src/styles.css"
 
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              // "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+
             ]
           },
           "configurations": {

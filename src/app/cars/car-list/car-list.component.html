@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">CARS</h1>
 </div>
 <div id="list-example" class="list-group">
@@ -6,4 +6,14 @@
     [routerLink]="['/car', car.id]">
     {{ car.id }} : {{ car.name }} / {{ car.brand }}
   </a>
-</div>
+</div> -->
+
+
+<mat-action-list>
+  <div *ngFor="let car of cars$ | async">
+      <button mat-list-item [routerLink]="['/car', car.id]">
+        {{ car.id }} : {{ car.name }} / {{ car.brand }}
+      </button>
+      <mat-divider></mat-divider>
+  </div>
+  </mat-action-list>
