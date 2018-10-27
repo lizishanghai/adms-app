@@ -46,6 +46,102 @@
       "discount": 80,
       "color": "blue",
       "trim": "8-speed automatic w/OD and auto-manual"
+    },
+
+    {
+      "id": 5,
+      "name": "X1",
+      "year": 2018,
+      "brand": "BMW",
+      "booked": true,
+      "price": 40600,
+      "discount": 41,
+      "color": "black",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 6,
+      "name": "X2",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 8765431,
+      "booked": false,
+      "price": 60600,
+      "discount": 90,
+      "color": "white",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 7,
+      "name": "X3",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 13579,
+      "booked": false,
+      "price": 80600,
+      "discount": 85,
+      "color": "red",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 8,
+      "name": "X4",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 24680,
+      "booked": false,
+      "price": 100600,
+      "discount": 80,
+      "color": "blue",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+
+    {
+      "id": 9,
+      "name": "X1",
+      "year": 2018,
+      "brand": "BMW",
+      "booked": true,
+      "price": 40600,
+      "discount": 41,
+      "color": "black",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 10,
+      "name": "X2",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 8765431,
+      "booked": false,
+      "price": 60600,
+      "discount": 90,
+      "color": "white",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 11,
+      "name": "X3",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 13579,
+      "booked": false,
+      "price": 80600,
+      "discount": 85,
+      "color": "red",
+      "trim": "8-speed automatic w/OD and auto-manual"
+    },
+    {
+      "id": 12,
+      "name": "X4",
+      "year": 2018,
+      "brand": "BMW",
+      "entryDate": 24680,
+      "booked": false,
+      "price": 100600,
+      "discount": 80,
+      "color": "blue",
+      "trim": "8-speed automatic w/OD and auto-manual"
     }
   ],
   "sales": [

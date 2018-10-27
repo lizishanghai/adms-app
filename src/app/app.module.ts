@@ -1,10 +1,17 @@
+import { environment } from './../environments/environment';
 import { MaterialModule } from './material';
 import { AuthModule } from './auth/auth.module';
 import { SalesModule } from './sales/sales.module';
 import { CarsModule } from './cars/cars.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -26,7 +33,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     CustomersModule,
     DashboardModule,
     AuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent],

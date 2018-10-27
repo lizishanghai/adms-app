@@ -1,177 +1,42 @@
-<h1 class="h2">CAR DETAIL</h1>
+<!-- <div>
+  <app-car-form
+    [car_fb]="car_fb">
+    <h1>Edit CAR</h1>
+    <button type="submit">Edit</button>
+  </app-car-form>
+</div> -->
 
+<hr>
+<h2></h2>
+<form [formGroup]="this.carService.form" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="key">
+  <div class="form-group">
+    <label for="">name</label>
+    <input formControlName="name" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.name.errors}">
+    <div class="invalid-feedback" *ngIf="submitted && formControls.name.errors">
+      <label *ngIf="formControls.name.errors.required">This filed is required.</label>
+      <label *ngIf="formControls.name.errors.minlength">At least 8 chars.</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">email</label>
+    <input formControlName="email" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+    <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">
+      Email format is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">mobile</label>
+    <input formControlName="mobile" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.mobile.errors}">
+    <div class="invalid-feedback" *ngIf="submitted && formControls.mobile.errors">
+      This filed is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Submit">
+  </div>
+</form>
 
-<div *ngIf="alerts" class="alert alert-success" role="alert">
-  {{alerts | json}}
+<div class="alert alert-info" *ngIf="showSuccessMessage" >
+  Submitted successfully.
 </div>
-
-<!--
-<form *ngIf="car$ | async as car" class="needs-validation" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm" novalidate>
-
-  <div class="form-group row">
-    <label for="id" class="col-sm-2 col-form-label">Car Id</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="id" [(ngModel)]="car.id" placeholder="Enter Car Id" required>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Car Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="name" [(ngModel)]="car.name" placeholder="Enter Car Name" required>
-      <div class="invalid-feedback" style="width: 100%;">
-        Your username is required.
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="year" class="col-sm-2 col-form-label">Year</label>
-    <div class="col-sm-10">
-        <select class="form-control" name="year" [(ngModel)]="car.year" id="year">
-            <option>2020</option>
-            <option>2019</option>
-            <option>2018</option>
-            <option>2017</option>
-            <option>2016</option>
-          </select>
-        </div>
-  </div>
-  <div class="form-group row">
-    <label for="brand" class="col-sm-2 col-form-label">Brand</label>
-    <div class="col-sm-10">
-        <select class="form-control" name="brand" [(ngModel)]="car.brand" id="brand">
-            <option>BMW</option>
-            <option>Ford</option>
-            <option>Buick</option>
-            <option>Audi</option>
-            <option>Toyota</option>
-          </select>    </div>
-  </div>
-  <div class="form-group row">
-    <label for="entrydate" class="col-sm-2 col-form-label">EntryDate</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="entrydate" [(ngModel)]="car.entrydate" placeholder="Enter Entry Date">
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2">Booked</div>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" name="booked" [(ngModel)]="car.booked" type="checkbox" id="booked">
-        <label class="form-check-label" for="booked">
-          booked
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="price" class="col-sm-2 col-form-label">Price</label>
-    <div class="col-sm-10">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">$</span>
-        </div>
-        <input type="text" class="form-control" name="price" [(ngModel)]="car.price" placeholder="Enter Price">
-      </div>
-
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="discount" class="col-sm-2 col-form-label">Discount</label>
-    <div class="col-sm-10">
-      <input type="range" class="custom-range" name="discount" [(ngModel)]="car.discount" min="0" max="100" id="discount">
-      {{car.discount}} %
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="color" class="col-sm-2 col-form-label">Color</label>
-    <div class="col-sm-10">
-      <select class="form-control" name="color" [(ngModel)]="car.color" id="color">
-        <option>red</option>
-        <option>white</option>
-        <option>black</option>
-        <option>blue</option>
-        <option>grey</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="trim" class="col-sm-2 col-form-label">Trim</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" name="trim" [(ngModel)]="car.trim" placeholder="Enter Trim" rows="3"></textarea>
-    </div>
-  </div>
-
-  <button class="btn btn-secondary" [routerLink]="['/cars']">Back</button>
-  <button type="submit" class="btn btn-primary" >Submit</button>
-</form>
-
-
- -->
-
-
-<form class="example-form" *ngIf="car$ | async as car" (ngSubmit)="onSubmit(form.value, form.valid)" #form="ngForm"
-  novalidate>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Enter Car Id" [(ngModel)]="car.id" name="id" required>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Enter Car Name" [(ngModel)]="car.name" name="name" required>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-select placeholder="Select Year" [(ngModel)]="car.year" name="year">
-      <mat-option value="option">2017</mat-option>
-      <mat-option value="option">2018</mat-option>
-      <mat-option value="option">2019</mat-option>
-      <mat-option value="option">2020</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-select placeholder="Select Brand" [(ngModel)]="car.brand" name="brand">
-      <mat-option value="option">BMW</mat-option>
-      <mat-option value="option">FORD</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput [matDatepicker]="picker" placeholder="Choose entry date" [(ngModel)]="car.entrydate" name="entrydate">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker touchUi #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-radio-group class="example-full-width" [(ngModel)]="car.booked" name="car.booked">
-    <span>Booked : </span>
-    <mat-radio-button value={{car.booked}}>Yes </mat-radio-button>
-    <mat-radio-button value={{car.booked}}>No</mat-radio-button>
-  </mat-radio-group>
-
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Price" type="number" [(ngModel)]="car.price" name="price" class="example-right-align">
-    <span matPrefix>$&nbsp;</span>
-    <span matSuffix>.00</span>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Discount" type="number" [(ngModel)]="car.discount" name="discount" class="example-right-align">
-    <span matPrefix>$&nbsp;</span>
-    <span matSuffix>.00</span>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-select placeholder="Select Color" [(ngModel)]="car.color" name="color">
-      <mat-option value="option">Red</mat-option>
-      <mat-option value="option">White</mat-option>
-      <mat-option value="option">Black</mat-option>
-      <mat-option value="option">Blue</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Enter Trim" [(ngModel)]="car.trim" name="trim"></textarea>
-    </mat-form-field>
-
-</form>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap, map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
 import { Car } from '../car';
 import { CarService } from './../car.service';
+import { MatPaginator, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-car-list',
@@ -12,21 +13,38 @@ import { CarService } from './../car.service';
   styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent implements OnInit {
-
   cars$: Observable<Car[]>;
+  cars$_fb: Observable<Car[]>;
   selectedId: number;
 
-  constructor(
-    private service: CarService,
-    private route: ActivatedRoute
-  ) { }
+  carArray = [];
+  showDeleteMessage: boolean;
+  searchText = '';
+
+  constructor(private carService: CarService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.cars$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = +params.get('id');
-        return this.service.getCars();
-      })
+    this.carService.getCars().subscribe(
+      list => {
+        this.carArray = list.map(item => {
+          return {
+            key: item.key,
+            ...item.payload.val()
+          };
+        });
+      }
     );
+  }
+
+  onDelete(key) {
+    if (confirm('Are you sure to delete this record ?')) {
+      this.carService.deleteCar(key);
+      this.showDeleteMessage = true;
+      setTimeout(() => this.showDeleteMessage = false, 3000);
+    }
+  }
+
+  filterCondition(car) {
+    return car.name.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1;
   }
 }

@@ -46,7 +46,7 @@ export class SalesDetailComponent implements OnInit {
 
     this.sales$.subscribe(val => {
         this.carService.getCar(val.carId).subscribe(car => {
-          this.car$ = car;
+        //  this.car$ = car;
         });
     });
   }
