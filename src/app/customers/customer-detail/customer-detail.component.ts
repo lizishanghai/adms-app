@@ -1,9 +1,11 @@
+import { DepartmentService } from './../department.service';
 import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer';
 import { Observable } from 'rxjs';
 import { CustomerService } from '../customer.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-customer-detail',
@@ -17,13 +19,12 @@ export class CustomerDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CustomerService) { }
+    private service: CustomerService,
+    private departmentService: DepartmentService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.customer$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getCustomer(+params.get('id')))
-    );
+    this.service.getCustomers();
   }
 
   gotoCustomers(customer: Customer) {
@@ -31,16 +32,19 @@ export class CustomerDetailComponent implements OnInit {
     this.router.navigate(['/customers', {id: customerId}]);
   }
 
-  onSubmit(customer: Customer, valid: boolean) {
-    if (valid) {
-      this.service.putCustomer(customer).subscribe(obj => {
-        console.log(<Customer>obj);
-        this.alerts = 'Save succeed';
-      },
-      err => {
-        this.alerts = 'Save Failed';
-      });
-    }
-}
+  onClear() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.notificationService.success('::Submitted successfully');
 
+  }
+
+  onSubmit() {
+    if (this.service.form.valid) {
+      this.service.insertCustomer(this.service.form.value);
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success('::Submitted successfully');
+    }
+  }
 }

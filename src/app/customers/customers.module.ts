@@ -1,6 +1,5 @@
-import { NgSemanticModule } from 'ng-semantic';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerListComponent } from './customer-list/customer-list.component';
@@ -14,8 +13,8 @@ import { MaterialModule } from '../material';
     CustomersRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgSemanticModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   declarations: [CustomerListComponent, CustomerDetailComponent]
 })
